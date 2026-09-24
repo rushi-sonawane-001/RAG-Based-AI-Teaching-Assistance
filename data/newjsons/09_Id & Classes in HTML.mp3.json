@@ -1,0 +1,383 @@
+{
+    "chunks": [
+        {
+            "number": "9",
+            "title": "Id & Classes in HTML",
+            "start": 0.0,
+            "end": 18.8,
+            "text": " In this video, I will tell you what are ID and Classes?  The concept of ID and Classes is one of the most confused concepts.  In fact, when I was learning HTML, I was very confused in my early days.  ID means Unique Identifier.  That is, if you give an ID to an element, you will not give that ID to the other element."
+        },
+        {
+            "number": "9",
+            "title": "Id & Classes in HTML",
+            "start": 18.8,
+            "end": 39.08,
+            "text": " But Class means that if you want to give a property to multiple elements,  then you will give it multiple classes.  For example, you can give a class named Red to a div and a form.  Similarly, you can give a class named BGRed to an article tag and a header tag.  Do like this video because we will now go to the computer screen"
+        },
+        {
+            "number": "9",
+            "title": "Id & Classes in HTML",
+            "start": 39.08,
+            "end": 61.199999999999996,
+            "text": " and we will see these things very closely.  Let's roll the intro.  Alright guys, so I am back.  And if you have not accessed the Sigma Web Development course,  then access the playlist or click on the bookmark or click on save."
+        },
+        {
+            "number": "9",
+            "title": "Id & Classes in HTML",
+            "start": 61.199999999999996,
+            "end": 77.2,
+            "text": " And the source code is also being uploaded on GitHub.  Now I will come here in the folder and quickly make a folder of video number 9.  So I will make a folder of video 9 here.  I will write here video 9.  And after making a folder of video 9, I will right click on shift and open with code."
+        },
+        {
+            "number": "9",
+            "title": "Id & Classes in HTML",
+            "start": 77.2,
+            "end": 93.0,
+            "text": " And here you can see that it has opened in BS code.  Now I will write index.html here, I will enter with an exclamation mark.  And along with that, now I will tell you what are ID and classes.  You must have an Aadhar card, right?  If not, then you must have some ID."
+        },
+        {
+            "number": "9",
+            "title": "Id & Classes in HTML",
+            "start": 93.0,
+            "end": 106.72,
+            "text": " Now don't write in the comment that I don't have an ID.  Whenever you go somewhere, you have to show your ID  in some of the cases to prove your identity.  That I am this.  Now if you want to understand about ID and classes in HTML,"
+        },
+        {
+            "number": "9",
+            "title": "Id & Classes in HTML",
+            "start": 106.72,
+            "end": 118.32,
+            "text": " then ID is what your identity is.  Okay, what is it? It is your identity.  So here listen to a story.  This is John and this is Harry.  These two are very good friends."
+        },
+        {
+            "number": "9",
+            "title": "Id & Classes in HTML",
+            "start": 118.32,
+            "end": 132.2,
+            "text": " They are very good friends.  They just don't share their lunch.  And the rest are very good friends.  In the matter of food, one is not and the rest are friends in everything.  And here you can see that this is John and Harry."
+        },
+        {
+            "number": "9",
+            "title": "Id & Classes in HTML",
+            "start": 132.2,
+            "end": 147.11999999999998,
+            "text": " Both of them have their own Aadhar ID.  So this is my Aadhar number.  And John's Aadhar number looks something like this.  So this is John's Aadhar number and this is my Aadhar number.  Our Aadhar numbers can never be the same."
+        },
+        {
+            "number": "9",
+            "title": "Id & Classes in HTML",
+            "start": 147.11999999999998,
+            "end": 166.35999999999999,
+            "text": " Or if we assume that our friend becomes my friend,  Tanya and John's friend becomes Shruti.  So their Aadhar numbers will also be different.  This is Tanya's Aadhar number.  Now this Aadhar number will be different for everyone."
+        },
+        {
+            "number": "9",
+            "title": "Id & Classes in HTML",
+            "start": 166.35999999999999,
+            "end": 176.84,
+            "text": " So John and Harry were friends.  John's friend became Shruti.  This is Tanya's Aadhar number.  None of these four numbers are the same.  If I told you any of these Aadhar numbers,"
+        },
+        {
+            "number": "9",
+            "title": "Id & Classes in HTML",
+            "start": 176.84,
+            "end": 193.72,
+            "text": " I said 35, 44, 5, you will understand that we are talking about Harry.  And if I said 54, 56, 56, 7,  you will understand that we are talking about Shruti.  And if I said 34, 56, 85, 68, 63,  then you will understand that we are talking about Tanya."
+        },
+        {
+            "number": "9",
+            "title": "Id & Classes in HTML",
+            "start": 193.72,
+            "end": 206.88,
+            "text": " So this Aadhar number uniquely identifies Tanya,  Harry, Shruti and John.  So this is their Aadhar number.  This is their ID.  No one else will get this Aadhar number."
+        },
+        {
+            "number": "9",
+            "title": "Id & Classes in HTML",
+            "start": 206.88,
+            "end": 219.39999999999998,
+            "text": " Along with that,  let's assume that John and Harry spent their childhood together.  They both have big underwears and they studied in the same class.  And the name of that class was class 10th.  Let's assume that they are in class 10th."
+        },
+        {
+            "number": "9",
+            "title": "Id & Classes in HTML",
+            "start": 219.39999999999998,
+            "end": 230.16,
+            "text": " Let's assume.  What's the point in assuming?  And Shruti is in class 9th.  And Tanya is also in class 9th.  So both are in class 9th."
+        },
+        {
+            "number": "9",
+            "title": "Id & Classes in HTML",
+            "start": 230.16,
+            "end": 238.16,
+            "text": " Tanya is also in class 9th and Shruti is also in class 9th.  So what is Shruti's class?  It is 9th.  Tanya's class can also be 9th.  Shruti will not study alone in class."
+        },
+        {
+            "number": "9",
+            "title": "Id & Classes in HTML",
+            "start": 238.16,
+            "end": 249.16,
+            "text": " Or Harry will not study alone in class 10th.  There are other kids in the class.  So the meaning of class is that  in one class there are Harry and John.  So can a class be multiple of one person?"
+        },
+        {
+            "number": "9",
+            "title": "Id & Classes in HTML",
+            "start": 249.16,
+            "end": 260.92,
+            "text": " A class can be multiple of one person.  Let's assume that Harry is in class 10th.  And he goes to a tuition where this class  is in class 10A.  So there can be more than one class."
+        },
+        {
+            "number": "9",
+            "title": "Id & Classes in HTML",
+            "start": 260.92,
+            "end": 270.92,
+            "text": " One is class 10th and the other is class 10A.  And along with that,  let's assume that Harry wears a red t-shirt.  So his class is also red.  So the meaning of class is not the class to study."
+        },
+        {
+            "number": "9",
+            "title": "Id & Classes in HTML",
+            "start": 270.92,
+            "end": 280.92,
+            "text": " The meaning of class is that  he has been classified in this class.  Now come here.  Leave John and Harry and Shruti.  Let's delete this."
+        },
+        {
+            "number": "9",
+            "title": "Id & Classes in HTML",
+            "start": 280.92,
+            "end": 291.68,
+            "text": " There is no point in this.  Now come to index.html and understand this.  Let's assume that I have made a div.  And I have given a class to this class.  And I have made a span."
+        },
+        {
+            "number": "9",
+            "title": "Id & Classes in HTML",
+            "start": 291.68,
+            "end": 301.68,
+            "text": " And I have given a class to this class.  The classes that I have given,  I can give them to different elements.  But if I want to put an id in any element.  Let's assume that I have put an id in the first div."
+        },
+        {
+            "number": "9",
+            "title": "Id & Classes in HTML",
+            "start": 301.68,
+            "end": 311.68,
+            "text": " I can put anything in the id.  So I can't give this id to any other element.  Because this is the Aadhaar card of this element.  Even if there is another div,  I can't put it."
+        },
+        {
+            "number": "9",
+            "title": "Id & Classes in HTML",
+            "start": 311.68,
+            "end": 322.44,
+            "text": " Then I have to put something else in the id.  I have put id in the second div.  I will write second and first here.  So this concept of id and classes,  I personally understood it very late."
+        },
+        {
+            "number": "9",
+            "title": "Id & Classes in HTML",
+            "start": 322.44,
+            "end": 332.44,
+            "text": " When I was learning WebDolopment.  In my early days.  No one told me that id uniquely identifies an element.  And the class,  can be put in multiple classes in one element."
+        },
+        {
+            "number": "9",
+            "title": "Id & Classes in HTML",
+            "start": 332.44,
+            "end": 342.44,
+            "text": " And can be put in multiple elements in one class.  Do you understand?  If I give this a red class,  I can also give it a BG yellow class.  BG yellow."
+        },
+        {
+            "number": "9",
+            "title": "Id & Classes in HTML",
+            "start": 343.2,
+            "end": 353.2,
+            "text": " I can give this class.  And if we give a class to any element in multiple,  then we put a space.  If I want to put multiple classes in this element.  Then what I will do?"
+        },
+        {
+            "number": "9",
+            "title": "Id & Classes in HTML",
+            "start": 353.2,
+            "end": 363.2,
+            "text": " First I will write red here.  Then I will put a space and write BG yellow.  So in this way I can give multiple classes.  To the same element.  Can I give multiple id to the same element?"
+        },
+        {
+            "number": "9",
+            "title": "Id & Classes in HTML",
+            "start": 363.2,
+            "end": 373.96,
+            "text": " Have you ever heard of someone's two Aadhaar cards?  I don't know about any one.  But there are no Aadhaar cards of Adality.  Aadhaar number is one of a person.  And Aadhaar numbers can't be same for different people."
+        },
+        {
+            "number": "9",
+            "title": "Id & Classes in HTML",
+            "start": 375.96,
+            "end": 385.96,
+            "text": " One person can't have multiple.  Different people can't have same.  But the class.  If I say what color T-shirt you wear.  Or you can wear a red T-shirt."
+        },
+        {
+            "number": "9",
+            "title": "Id & Classes in HTML",
+            "start": 385.96,
+            "end": 395.96,
+            "text": " No problem.  You will get it if you go on the road.  And let's say you like mango.  Or you like banana.  Or you like grapes."
+        },
+        {
+            "number": "9",
+            "title": "Id & Classes in HTML",
+            "start": 395.96,
+            "end": 406.71999999999997,
+            "text": " You will get multiple people.  So assume that in banana class.  So we can classify in one class.  And we can give different elements to the same class.  I hope you understood this."
+        },
+        {
+            "number": "9",
+            "title": "Id & Classes in HTML",
+            "start": 406.71999999999997,
+            "end": 418.71999999999997,
+            "text": " Now I will write some CSS.  And don't say that you are not reading CSS.  What I am writing in CSS.  Assume that I am writing some alien language.  In style.css."
+        },
+        {
+            "number": "9",
+            "title": "Id & Classes in HTML",
+            "start": 418.71999999999997,
+            "end": 428.71999999999997,
+            "text": " But I am trying to make a point.  I will click here.  And the preview is looking like this.  I will show you one thing.  How do we target in CSS."
+        },
+        {
+            "number": "9",
+            "title": "Id & Classes in HTML",
+            "start": 429.48,
+            "end": 439.48,
+            "text": " Dot means red class.  And hash first div means.  Hash means id.  Dot means class.  If I say the background color of the first div."
+        },
+        {
+            "number": "9",
+            "title": "Id & Classes in HTML",
+            "start": 439.48,
+            "end": 449.48,
+            "text": " Is red.  So by doing this.  The background color will be red.  These are the selectors in CSS.  And now I don't want to confuse you."
+        },
+        {
+            "number": "9",
+            "title": "Id & Classes in HTML",
+            "start": 449.48,
+            "end": 460.24,
+            "text": " And I can comment like this.  But we will read all this later.  Now by doing dot red.  I will write background color red.  And along with that."
+        },
+        {
+            "number": "9",
+            "title": "Id & Classes in HTML",
+            "start": 460.24,
+            "end": 470.24,
+            "text": " Dot bg yellow.  I have to put dot.  Dot means class.  Class bg yellow.  And I will make background color yellow."
+        },
+        {
+            "number": "9",
+            "title": "Id & Classes in HTML",
+            "start": 470.24,
+            "end": 480.24,
+            "text": " Sorry I will make it color red.  Dot red means color will be red.  See its color is red.  And background color is yellow.  So this way you can use IDN classes."
+        },
+        {
+            "number": "9",
+            "title": "Id & Classes in HTML",
+            "start": 480.24,
+            "end": 491.0,
+            "text": " In CSS.  I hope you understood this.  Now one thing to note here.  IDN classes are attributes of elements.  This is id attribute."
+        },
+        {
+            "number": "9",
+            "title": "Id & Classes in HTML",
+            "start": 491.0,
+            "end": 501.0,
+            "text": " And this is class attribute.  So what are IDN classes?  They are attributes of elements.  Now there is another use of ID.  I will tell you what is the use of ID."
+        },
+        {
+            "number": "9",
+            "title": "Id & Classes in HTML",
+            "start": 501.0,
+            "end": 511.0,
+            "text": " If I take you to Wikipedia.  And I write coding.  So this page of Wikipedia.  I will go to another page.  So you see."
+        },
+        {
+            "number": "9",
+            "title": "Id & Classes in HTML",
+            "start": 511.0,
+            "end": 521.76,
+            "text": " When you go to any page on Wikipedia.  You can take the link of that particular page.  I will scroll down.  And I will inspect here.  I will see its ID."
+        },
+        {
+            "number": "9",
+            "title": "Id & Classes in HTML",
+            "start": 521.76,
+            "end": 531.76,
+            "text": " So I will copy its ID.  And if I put here.  Hashtag.  And this ID.  Now if I hit enter."
+        },
+        {
+            "number": "9",
+            "title": "Id & Classes in HTML",
+            "start": 531.76,
+            "end": 541.76,
+            "text": " It will bring me here.  So if I put it in incognito.  It will scroll and show me that particular ID.  See it has scrolled.  Instead of showing me this."
+        },
+        {
+            "number": "9",
+            "title": "Id & Classes in HTML",
+            "start": 541.76,
+            "end": 552.52,
+            "text": " It has scrolled and shown me.  So ID works in linking.  Remember this.  Very few people will tell you.  That you can generate links."
+        },
+        {
+            "number": "9",
+            "title": "Id & Classes in HTML",
+            "start": 552.52,
+            "end": 562.52,
+            "text": " If you write ID in front of any link.  When you open that link.  It will focus that ID.  You can see.  As soon as I hit enter."
+        },
+        {
+            "number": "9",
+            "title": "Id & Classes in HTML",
+            "start": 562.52,
+            "end": 572.52,
+            "text": " I might have done wrong ID.  But you got the point.  29.29  If I hit enter.  I am down."
+        },
+        {
+            "number": "9",
+            "title": "Id & Classes in HTML",
+            "start": 573.28,
+            "end": 583.28,
+            "text": " And if I scroll.  And open a new tab.  And scroll.  It will bring me to the page.  I hope you understood."
+        },
+        {
+            "number": "9",
+            "title": "Id & Classes in HTML",
+            "start": 583.28,
+            "end": 593.28,
+            "text": " ID and classes.  ID means.  Class means.  One person's property.  One element can be given."
+        },
+        {
+            "number": "9",
+            "title": "Id & Classes in HTML",
+            "start": 593.28,
+            "end": 604.04,
+            "text": " Multiple classes.  One element can be red.  And the other can be yellow.  Red class can be given.  You can put red class on fake element."
+        },
+        {
+            "number": "9",
+            "title": "Id & Classes in HTML",
+            "start": 604.04,
+            "end": 614.04,
+            "text": " And you can put red class on one element.  And yellow class on another.  I hope you understood.  That's all for this video.  I was reading captions."
+        },
+        {
+            "number": "9",
+            "title": "Id & Classes in HTML",
+            "start": 614.04,
+            "end": 624.04,
+            "text": " I laughed.  I laughed 5-10 times.  I asked to access.  Name your village.  So access the playlist."
+        },
+        {
+            "number": "9",
+            "title": "Id & Classes in HTML",
+            "start": 624.04,
+            "end": 634.8,
+            "text": " Access github.  Like the video.  And comment.  Thank you so much for watching this video.  And I will see you next time."
+        }
+    ],
+    "text": " In this video, I will tell you what are ID and Classes? The concept of ID and Classes is one of the most confused concepts. In fact, when I was learning HTML, I was very confused in my early days. ID means Unique Identifier. That is, if you give an ID to an element, you will not give that ID to the other element. But Class means that if you want to give a property to multiple elements, then you will give it multiple classes. For example, you can give a class named Red to a div and a form. Similarly, you can give a class named BGRed to an article tag and a header tag. Do like this video because we will now go to the computer screen and we will see these things very closely. Let's roll the intro. Alright guys, so I am back. And if you have not accessed the Sigma Web Development course, then access the playlist or click on the bookmark or click on save. And the source code is also being uploaded on GitHub. Now I will come here in the folder and quickly make a folder of video number 9. So I will make a folder of video 9 here. I will write here video 9. And after making a folder of video 9, I will right click on shift and open with code. And here you can see that it has opened in BS code. Now I will write index.html here, I will enter with an exclamation mark. And along with that, now I will tell you what are ID and classes. You must have an Aadhar card, right? If not, then you must have some ID. Now don't write in the comment that I don't have an ID. Whenever you go somewhere, you have to show your ID in some of the cases to prove your identity. That I am this. Now if you want to understand about ID and classes in HTML, then ID is what your identity is. Okay, what is it? It is your identity. So here listen to a story. This is John and this is Harry. These two are very good friends. They are very good friends. They just don't share their lunch. And the rest are very good friends. In the matter of food, one is not and the rest are friends in everything. And here you can see that this is John and Harry. Both of them have their own Aadhar ID. So this is my Aadhar number. And John's Aadhar number looks something like this. So this is John's Aadhar number and this is my Aadhar number. Our Aadhar numbers can never be the same. Or if we assume that our friend becomes my friend, Tanya and John's friend becomes Shruti. So their Aadhar numbers will also be different. This is Tanya's Aadhar number. Now this Aadhar number will be different for everyone. So John and Harry were friends. John's friend became Shruti. This is Tanya's Aadhar number. None of these four numbers are the same. If I told you any of these Aadhar numbers, I said 35, 44, 5, you will understand that we are talking about Harry. And if I said 54, 56, 56, 7, you will understand that we are talking about Shruti. And if I said 34, 56, 85, 68, 63, then you will understand that we are talking about Tanya. So this Aadhar number uniquely identifies Tanya, Harry, Shruti and John. So this is their Aadhar number. This is their ID. No one else will get this Aadhar number. Along with that, let's assume that John and Harry spent their childhood together. They both have big underwears and they studied in the same class. And the name of that class was class 10th. Let's assume that they are in class 10th. Let's assume. What's the point in assuming? And Shruti is in class 9th. And Tanya is also in class 9th. So both are in class 9th. Tanya is also in class 9th and Shruti is also in class 9th. So what is Shruti's class? It is 9th. Tanya's class can also be 9th. Shruti will not study alone in class. Or Harry will not study alone in class 10th. There are other kids in the class. So the meaning of class is that in one class there are Harry and John. So can a class be multiple of one person? A class can be multiple of one person. Let's assume that Harry is in class 10th. And he goes to a tuition where this class is in class 10A. So there can be more than one class. One is class 10th and the other is class 10A. And along with that, let's assume that Harry wears a red t-shirt. So his class is also red. So the meaning of class is not the class to study. The meaning of class is that he has been classified in this class. Now come here. Leave John and Harry and Shruti. Let's delete this. There is no point in this. Now come to index.html and understand this. Let's assume that I have made a div. And I have given a class to this class. And I have made a span. And I have given a class to this class. The classes that I have given, I can give them to different elements. But if I want to put an id in any element. Let's assume that I have put an id in the first div. I can put anything in the id. So I can't give this id to any other element. Because this is the Aadhaar card of this element. Even if there is another div, I can't put it. Then I have to put something else in the id. I have put id in the second div. I will write second and first here. So this concept of id and classes, I personally understood it very late. When I was learning WebDolopment. In my early days. No one told me that id uniquely identifies an element. And the class, can be put in multiple classes in one element. And can be put in multiple elements in one class. Do you understand? If I give this a red class, I can also give it a BG yellow class. BG yellow. I can give this class. And if we give a class to any element in multiple, then we put a space. If I want to put multiple classes in this element. Then what I will do? First I will write red here. Then I will put a space and write BG yellow. So in this way I can give multiple classes. To the same element. Can I give multiple id to the same element? Have you ever heard of someone's two Aadhaar cards? I don't know about any one. But there are no Aadhaar cards of Adality. Aadhaar number is one of a person. And Aadhaar numbers can't be same for different people. One person can't have multiple. Different people can't have same. But the class. If I say what color T-shirt you wear. Or you can wear a red T-shirt. No problem. You will get it if you go on the road. And let's say you like mango. Or you like banana. Or you like grapes. You will get multiple people. So assume that in banana class. So we can classify in one class. And we can give different elements to the same class. I hope you understood this. Now I will write some CSS. And don't say that you are not reading CSS. What I am writing in CSS. Assume that I am writing some alien language. In style.css. But I am trying to make a point. I will click here. And the preview is looking like this. I will show you one thing. How do we target in CSS. Dot means red class. And hash first div means. Hash means id. Dot means class. If I say the background color of the first div. Is red. So by doing this. The background color will be red. These are the selectors in CSS. And now I don't want to confuse you. And I can comment like this. But we will read all this later. Now by doing dot red. I will write background color red. And along with that. Dot bg yellow. I have to put dot. Dot means class. Class bg yellow. And I will make background color yellow. Sorry I will make it color red. Dot red means color will be red. See its color is red. And background color is yellow. So this way you can use IDN classes. In CSS. I hope you understood this. Now one thing to note here. IDN classes are attributes of elements. This is id attribute. And this is class attribute. So what are IDN classes? They are attributes of elements. Now there is another use of ID. I will tell you what is the use of ID. If I take you to Wikipedia. And I write coding. So this page of Wikipedia. I will go to another page. So you see. When you go to any page on Wikipedia. You can take the link of that particular page. I will scroll down. And I will inspect here. I will see its ID. So I will copy its ID. And if I put here. Hashtag. And this ID. Now if I hit enter. It will bring me here. So if I put it in incognito. It will scroll and show me that particular ID. See it has scrolled. Instead of showing me this. It has scrolled and shown me. So ID works in linking. Remember this. Very few people will tell you. That you can generate links. If you write ID in front of any link. When you open that link. It will focus that ID. You can see. As soon as I hit enter. I might have done wrong ID. But you got the point. 29.29 If I hit enter. I am down. And if I scroll. And open a new tab. And scroll. It will bring me to the page. I hope you understood. ID and classes. ID means. Class means. One person's property. One element can be given. Multiple classes. One element can be red. And the other can be yellow. Red class can be given. You can put red class on fake element. And you can put red class on one element. And yellow class on another. I hope you understood. That's all for this video. I was reading captions. I laughed. I laughed 5-10 times. I asked to access. Name your village. So access the playlist. Access github. Like the video. And comment. Thank you so much for watching this video. And I will see you next time."
+}

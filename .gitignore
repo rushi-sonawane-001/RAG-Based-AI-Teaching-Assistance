@@ -1,0 +1,37 @@
+# Environment
+.env
+.env.*
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+myenv/
+venv/
+.venv/
+
+# Large media files
+*.mp3
+*.wav
+*.mp4
+*.webm
+
+# Generated outputs
+outputs/*
+!outputs/.gitkeep
+
+# Model files
+*.pkl
+*.pt
+*.pth
+
+# IDE
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# library
+.whisper/

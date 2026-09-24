@@ -1,0 +1,9 @@
+I can help you with that.
+
+It looks like Semantic Tags are taught in Video 11 of the Sigma Web Development course.
+
+In this video, Semantic Tags are explained as tags that help browsers and web crawlers understand the content and purpose of your website. The instructor explains that Semantic Tags are used to define the main content, header, footer, and other elements of a website, which helps search engines like Google to understand the website better.
+
+The content of this video starts at around 1 minute into the video (at 59.76 seconds) and continues until the end of the video. If you want to learn more about Semantic Tags and how to use them in your website, I would recommend watching Video 11 of the Sigma Web Development course.
+
+Let me know if you have any other questions or if there's anything else I can help you with!
