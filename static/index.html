@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sigma AI Teaching Assistant | RAG Chat</title>
+  
+  <!-- Google Fonts: Inter & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Markdown & Syntax Highlighting -->
+  <script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/atom-one-dark.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/lib/highlight.min.js"></script>
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="bg-main text-main">
+
+  <div class="app-container">
+    
+    <!-- Collapsible Sidebar -->
+    <aside id="sidebar" class="sidebar">
+      <div class="sidebar-header">
+        <div class="brand">
+          <div class="brand-sparkle">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2Z" fill="url(#sparkle-grad)" stroke="none"/>
+              <defs>
+                <linearGradient id="sparkle-grad" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#4285F4"/>
+                  <stop offset="0.5" stop-color="#9B72CB"/>
+                  <stop offset="1" stop-color="#D96570"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <span class="brand-text">CourseRAG</span>
+        </div>
+        <button id="sidebar-close-btn" class="icon-btn sm-only" aria-label="Close sidebar">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <div class="sidebar-actions">
+        <button id="new-chat-btn" class="new-chat-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+          <span>New Chat</span>
+        </button>
+      </div>
+
+      <!-- Quick Topics / Course Videos -->
+      <div class="sidebar-section">
+        <div class="sidebar-heading">
+          <span>COURSE LECTURES</span>
+          <span id="course-count-badge" class="badge">20</span>
+        </div>
+        <div id="course-topics-list" class="topics-list custom-scroll">
+          <!-- Loaded dynamically -->
+          <div class="topic-item-skeleton">Loading lectures...</div>
+        </div>
+      </div>
+
+      <!-- Chat History -->
+      <div class="sidebar-section flex-1">
+        <div class="sidebar-heading">
+          <span>RECENT QUESTIONS</span>
+          <button id="clear-history-btn" class="text-btn text-xs" title="Clear History">Clear</button>
+        </div>
+        <div id="chat-history-list" class="history-list custom-scroll">
+          <!-- Loaded dynamically -->
+        </div>
+      </div>
+
+      <!-- System Status Footer -->
+      <div class="sidebar-footer">
+        <div class="status-indicator">
+          <div class="status-row">
+            <span class="status-dot" id="ollama-dot"></span>
+            <span class="status-label">Ollama (bge-m3 / llama3.2)</span>
+          </div>
+          <div class="status-row">
+            <span class="status-dot" id="gemini-dot"></span>
+            <span class="status-label">Gemini 3.8 Flash</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="chat-main">
+      
+      <!-- Top Navigation Bar -->
+      <header class="chat-header">
+        <div class="header-left">
+          <button id="sidebar-toggle-btn" class="icon-btn" aria-label="Toggle sidebar">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          <div class="header-title">
+            <span class="title-primary">Sigma Web Development Course</span>
+            <span class="title-secondary">AI Teaching Assistant</span>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <!-- Model Selector Pill -->
+          <div class="model-selector-wrapper">
+            <div class="model-pill">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sparkle-icon">
+                <path d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2Z" fill="currentColor"/>
+              </svg>
+              <select id="model-select" class="model-select" aria-label="Select AI Model">
+                <option value="gemini" selected>Gemini 3.8 Flash (Cloud)</option>
+                <option value="ollama">Ollama Llama 3.2 (Local)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Top-K Chunks Selector -->
+          <div class="k-selector-wrapper">
+            <label for="top-k-select" class="k-label">Top-K:</label>
+            <select id="top-k-select" class="k-select">
+              <option value="3">3</option>
+              <option value="5" selected>5</option>
+              <option value="8">8</option>
+            </select>
+          </div>
+
+          <!-- Clear / Restart Chat -->
+          <button id="restart-chat-btn" class="icon-btn" title="Clear current conversation">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+          </button>
+        </div>
+      </header>
+
+      <!-- Chat Messages Scroll Area -->
+      <section id="chat-messages" class="chat-messages custom-scroll">
+        
+        <!-- Welcome Screen (Shown when empty) -->
+        <div id="welcome-view" class="welcome-view">
+          <div class="welcome-emblem">
+            <div class="emblem-glow"></div>
+            <svg viewBox="0 0 32 32" width="46" height="46" fill="none">
+              <path d="M16 2L19.2 12.8L30 16L19.2 19.2L16 30L12.8 19.2L2 16L12.8 12.8L16 2Z" fill="url(#welcome-grad)"/>
+              <defs>
+                <linearGradient id="welcome-grad" x1="2" y1="2" x2="30" y2="30" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#4285F4"/>
+                  <stop offset="0.5" stop-color="#A855F7"/>
+                  <stop offset="1" stop-color="#EC4899"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          
+          <h1 class="welcome-title">Hi there, what course topic can I help with?</h1>
+          <p class="welcome-desc">
+            Search across 20+ Sigma Web Dev video lectures. I retrieve the exact lecture and timestamps, then explain the concept directly.
+          </p>
+
+          <!-- Starter Suggestion Cards -->
+          <div class="prompt-grid">
+            <div class="prompt-card" data-prompt="Where is the CSS Box Model (margin, padding, borders) taught?">
+              <div class="prompt-card-icon">📦</div>
+              <div class="prompt-card-text">
+                <div class="prompt-card-title">CSS Box Model</div>
+                <div class="prompt-card-sub">Margin, padding, and border concepts</div>
+              </div>
+            </div>
+
+            <div class="prompt-card" data-prompt="Which video explains HTML Entities and the code tag?">
+              <div class="prompt-card-icon">🏷️</div>
+              <div class="prompt-card-text">
+                <div class="prompt-card-title">HTML Entities & Code Tag</div>
+                <div class="prompt-card-sub">Tutorial number, usage, and examples</div>
+              </div>
+            </div>
+
+            <div class="prompt-card" data-prompt="Where can I find the Exercise 1 Pure HTML Media Player?">
+              <div class="prompt-card-icon">🎵</div>
+              <div class="prompt-card-text">
+                <div class="prompt-card-title">Pure HTML Media Player</div>
+                <div class="prompt-card-sub">Exercise 1 instructions and timestamps</div>
+              </div>
+            </div>
+
+            <div class="prompt-card" data-prompt="How do I install VS Code and how do websites work?">
+              <div class="prompt-card-icon">💻</div>
+              <div class="prompt-card-text">
+                <div class="prompt-card-title">Installing VS Code</div>
+                <div class="prompt-card-sub">Course intro and dev environment setup</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chat Conversation Messages Container -->
+        <div id="messages-container" class="messages-container hidden"></div>
+
+        <!-- Typing / Searching Indicator -->
+        <div id="typing-indicator" class="typing-indicator hidden">
+          <div class="assistant-avatar">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none">
+              <path d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2Z" fill="url(#typing-grad)"/>
+              <defs>
+                <linearGradient id="typing-grad" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#4285F4"/>
+                  <stop offset="0.5" stop-color="#9B72CB"/>
+                  <stop offset="1" stop-color="#D96570"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <div class="typing-bubble">
+            <div class="shimmer-text" id="typing-status-text">Searching course lectures & timestamps...</div>
+            <div class="dots-pulse">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Bottom Chat Input Bar -->
+      <footer class="chat-input-section">
+        <div class="input-container">
+          <div class="input-card">
+            <textarea
+              id="user-input"
+              class="chat-textarea custom-scroll"
+              rows="1"
+              placeholder="Ask a question about the Sigma Web Development course..."
+              aria-label="User query input"
+            ></textarea>
+            
+            <div class="input-actions">
+              <button id="send-btn" class="send-btn" aria-label="Send message" disabled>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="12" y1="19" x2="12" y2="5"></line>
+                  <polyline points="5 12 12 5 19 12"></polyline>
+                </svg>
+              </button>
+            </div>
+          </div>
+          
+          <div class="input-footer-note">
+            <span>Retrieval-Augmented Generation • Powered by BGE-M3 & LLM • Accurate lecture timestamps</span>
+          </div>
+        </div>
+      </footer>
+
+    </main>
+
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
+
