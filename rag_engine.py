@@ -20,14 +20,38 @@ def format_timestamp(seconds: float) -> str:
 
 
 class RAGEngine:
-    def __init__(self, joblib_path: str = "models/embeddings.joblib", ollama_url: str = "http://localhost:11434"):
+    
+    def __init__(
+        self,
+        joblib_path: str = "models/embeddings.joblib",
+        ollama_url: str | None = None,
+    ):
         self.joblib_path = joblib_path
-        self.ollama_url = ollama_url
+        self.ollama_url = (
+            ollama_url
+            or os.getenv("OLLAMA_URL")
+            or "http://localhost:11434"
+        ).rstrip("/")
+
+        self.ollama_api_key = os.getenv("OLLAMA_API_KEY")
         self.df = None
         self.embedding_matrix = None
         self.gemini_client = None
         self._init_gemini()
         self.load_index()
+        
+    
+    def _ollama_headers(self) -> dict:
+        headers = {}
+
+        if self.ollama_api_key:
+            headers["Authorization"] = (
+                f"Bearer {self.ollama_api_key}"
+            )
+
+        return headers
+
+
 
     def _init_gemini(self):
         api_key = os.getenv("GEMINI_API_KEY")
@@ -49,7 +73,7 @@ class RAGEngine:
 
     def check_ollama_status(self) -> dict:
         try:
-            r = requests.get(f"{self.ollama_url}/api/tags", timeout=3)
+            r = requests.get(f"{self.ollama_url}/api/tags", headers=self._ollama_headers(),timeout=3)
             if r.status_code == 200:
                 data = r.json()
                 models = [m.get("name") for m in data.get("models", [])]
@@ -76,6 +100,7 @@ class RAGEngine:
             r = requests.post(
                 f"{self.ollama_url}/api/embed",
                 json={"model": "bge-m3", "input": [query_text]},
+                headers=self._ollama_headers(),
                 timeout=60
             )
             r.raise_for_status()
@@ -187,6 +212,7 @@ Instructions:
                         "prompt": prompt,
                         "stream": False
                     },
+                    headers=self._ollama_headers(),
                     timeout=300
                 )
                 r.raise_for_status()
@@ -207,6 +233,7 @@ Instructions:
                     "prompt": prompt,
                     "stream": True
                 },
+                headers=self._ollama_headers(),
                 stream=True,
                 timeout=300
             )
