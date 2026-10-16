@@ -118,7 +118,7 @@ def root():
 if __name__ == "__main__":
     import uvicorn
     print("\n========================================================")
-    print("Starting Sigma Web Dev RAG AI Interface on http://localhost:8000")
+    print("Starting CourseRAG AI Interface on http://localhost:8000")
     print("========================================================\n")
     uvicorn.run(app, host="127.0.0.1", port=8000)
 
