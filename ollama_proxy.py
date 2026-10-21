@@ -31,10 +31,12 @@ async def ollama_proxy(path: str, request: Request):
         raise HTTPException(status_code=401, detail="Unauthorized")
 
     # Allow only the endpoints needed by the deployed app.
-    if (request.method, path) not in {
-        ("GET", "tags"),
-        ("POST", "embed"),
-    }:
+    ALLOWED = {
+        ("GET",  "tags"),      # model list — used by /api/status
+        ("POST", "embed"),     # bge-m3 query embeddings — required for ALL queries
+        ("POST", "generate"),  # llama3.2 generation — Ollama LLM mode
+    }
+    if (request.method, path) not in ALLOWED:
         raise HTTPException(status_code=404, detail="Endpoint not allowed")
 
     try:
@@ -49,7 +51,7 @@ async def ollama_proxy(path: str, request: Request):
                     "content-type", "application/json"
                 )
             },
-            timeout=65,
+            timeout=120,  # increased for /api/generate which can be slow
         )
 
         return JSONResponse(

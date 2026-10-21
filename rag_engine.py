@@ -87,13 +87,15 @@ class RAGEngine:
             return {"online": False, "error": str(e)}
         return {"online": False}
 
+    GEMINI_MODEL = "gemini-2.0-flash"
+
     def check_gemini_status(self) -> dict:
         api_key = os.getenv("GEMINI_API_KEY")
         if not api_key:
             return {"available": False, "reason": "GEMINI_API_KEY not found in .env"}
         if self.gemini_client is None:
             self._init_gemini()
-        return {"available": self.gemini_client is not None, "model": "gemini-3.8-flash"}
+        return {"available": self.gemini_client is not None, "model": self.GEMINI_MODEL}
 
     def get_query_embedding(self, query_text: str) -> list[float]:
         try:
@@ -185,23 +187,26 @@ Instructions:
                 self._init_gemini()
             if self.gemini_client is None:
                 raise RuntimeError("Gemini API key is not configured or client failed to initialize.")
-            
-            try:
-                response = self.gemini_client.models.generate_content(
-                    model="gemini-3.8-flash",
-                    contents=prompt
-                )
-                if response.text:
-                    return response.text
-            except Exception as e1:
+
+            # Try model aliases in order until one succeeds
+            models_to_try = [
+                "gemini-2.0-flash",
+                "gemini-1.5-flash",
+                "gemini-flash-latest",
+            ]
+            last_error = None
+            for model_name in models_to_try:
                 try:
-                    interaction = self.gemini_client.interactions.create(
-                        model="gemini-3.8-flash",
-                        input=prompt
+                    response = self.gemini_client.models.generate_content(
+                        model=model_name,
+                        contents=prompt
                     )
-                    return interaction.output_text
-                except Exception as e2:
-                    raise RuntimeError(f"Gemini API error (generate_content: {e1} | interactions: {e2})")
+                    if response.text:
+                        return response.text
+                except Exception as e:
+                    last_error = e
+                    continue
+            raise RuntimeError(f"All Gemini models failed. Last error: {last_error}")
 
         elif model_type == "ollama":
             try:
@@ -248,6 +253,7 @@ Instructions:
                     if chunk.get("done", False):
                         break
         elif model_type == "gemini":
+            # Gemini: generate full answer then simulate streaming word-by-word
             full_text = self.generate_answer(prompt, model_type="gemini")
             import time
             words = full_text.split(" ")
