@@ -20,11 +20,24 @@ if sys.stdout.encoding != "utf-8":
 
 app = FastAPI(title="Sigma Web Development RAG Assistant")
 
-# Enable CORS
+# ---------------------------------------------------------------------------
+# CORS — allow the frontend origin(s).
+# In production, set ALLOWED_ORIGINS env var to a comma-separated list of
+# your actual frontend URLs, e.g. "https://course-rag.vercel.app".
+# Falls back to "*" only when the variable is absent (local dev).
+# ---------------------------------------------------------------------------
+_raw_origins = os.getenv("ALLOWED_ORIGINS", "*")
+_origins: list[str] = (
+    [o.strip() for o in _raw_origins.split(",") if o.strip()]
+    if _raw_origins != "*"
+    else ["*"]
+)
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
+    allow_origins=_origins,
+    # allow_credentials must be False when allow_origins=["*"]
+    allow_credentials=(_raw_origins != "*"),
     allow_methods=["*"],
     allow_headers=["*"],
 )

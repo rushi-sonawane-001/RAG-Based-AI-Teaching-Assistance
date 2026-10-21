@@ -21,7 +21,8 @@ venv/
 outputs/*
 !outputs/.gitkeep
 
-# Model files
+# Model files — NOTE: *.joblib is intentionally NOT excluded.
+# models/embeddings.joblib must stay committed so Render loads it at startup.
 *.pkl
 *.pt
 *.pth

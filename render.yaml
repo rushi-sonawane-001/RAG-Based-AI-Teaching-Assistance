@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: courserag-ai
+    runtime: python
+    region: singapore   # closest to India; change to oregon/frankfurt if preferred
+    plan: free
+    buildCommand: pip install -r requirements-deploy.txt
+    startCommand: uvicorn app:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11"
+      - key: GEMINI_API_KEY
+        sync: false          # set value in Render dashboard — never committed
+      - key: OLLAMA_URL
+        sync: false          # your Cloudflare tunnel URL
+      - key: OLLAMA_API_KEY
+        sync: false          # strong random token matching OLLAMA_PROXY_TOKEN
+      - key: ALLOWED_ORIGINS
+        sync: false          # comma-separated frontend URLs, or leave blank for "*"
